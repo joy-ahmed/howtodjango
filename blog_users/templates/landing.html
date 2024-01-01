@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+        }
+
+        .hero-section {
+            background: #343541;
+            color: #fff;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .featured-section {
+            padding: 80px 0;
+        }
+
+        .featured-item {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+    </style>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Welcome to Members only Blog</h1>
+            <p>This is a catchy headline about your awesome website.</p>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="row">
+                <!-- Featured Item 1 -->
+                <div class="col-md-4 featured-item">
+                    <h2>Members Only</h2>
+                    <p>Access exclusive content available only to our members. Join now!</p>
+                </div>
+
+                <!-- Featured Item 2 -->
+                <div class="col-md-4 featured-item">
+                    <h2>Premium Features</h2>
+                    <p>Unlock premium features and enhance your experience on our platform.</p>
+                </div>
+
+                <!-- Featured Item 3 -->
+                <div class="col-md-4 featured-item">
+                    <h2>24/7 Support</h2>
+                    <p>Our dedicated support team is here to assist you around the clock.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+

@@ -1,0 +1,46 @@
+<!-- login_page.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header text-white" style="background: #343541">
+          <h2 class="mb-0">Login</h2>
+        </div>
+
+        <div class="card-body">
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn" style="background: #343541; color: #fff;">Login</button> or
+            <span><a href="{% url "create_account" %}">Create an account</a></span>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- Add this script block at the end of the file -->
+
+ <script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function () {
+    {% for message in messages %}
+      Toastify({
+        text: "{{ message }}",
+        duration: 3000,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "center", // `left`, `center`, or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+        onClick: function(){} // Callback after click
+      }).showToast();
+    {% endfor %}
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="row">
+          {% for blog in blogs %}
+            <div class="col-md-12 mb-4">
+              <div class="card">
+                {% if blog.cover_image %}
+                  <img src="{{ blog.cover_image.url }}" class="card-img-top" alt="{{ blog.title }}">
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title">{{ blog.title }}</h5>
+                  <div class="text-muted">
+                    <i class="far fa-calendar-alt"></i> {{ blog.created_at|date:"F d, Y" }}
+                  </div>
+                  <p class="card-text">{{ blog.content | safe | truncatewords:20 }}</p>
+                </div>
+                <div class="card-footer">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <a href="{% url 'blog_detail' blog.slug %}" class="card-link">Read more</a>
+                    <div class="text-muted">
+                      <i class="far fa-user"></i> author: {{ blog.author }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-md-3">
+        <!-- Sidebar Section (Add your sidebar content here) -->
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Sidebar</h5>
+            <!-- Add your sidebar content for Card 1 here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
