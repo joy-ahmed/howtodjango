@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
+from unidecode import unidecode
 
 from blog_users.models import CustomUser
 
@@ -16,7 +17,8 @@ class BlogPost(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            ascii_title = unidecode(self.title)
+            self.slug = slugify(ascii_title)
         
         super().save(*args, **kwargs)
 
