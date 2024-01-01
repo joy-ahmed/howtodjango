@@ -20,32 +20,33 @@
             <p><strong>Username:</strong> {{ user.username }}</p>
             <p><strong>Bio:</strong> {{ user.bio }}</p>
             <p><strong>User Role:</strong> {{ user.user_role }}</p>
+            {% if user.user_role == 'blogger' %}
             <hr class="pb-5">
             <h4 class="mt-4">User's Blog Posts</h4>
-
-            {% if posts %}
-              <table class="table table-bordered table-striped">
-                <thead class="table-dark">
-                  <tr>
-                    <th>Title</th>
-                    <th>Content</th>
-                    <th>Update</th>
-                    <th>Delete</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for post in posts %}
+              {% if posts %}
+                <table class="table table-bordered table-striped">
+                  <thead class="table-dark">
                     <tr>
-                      <td><a href="{% url "blog_detail" post.slug %}">{{ post.title }}</a></td>
-                      <td>{{ post.content|truncatechars:50|safe }}</td>
-                      <td><a href="{% url "update_blog_post" post.slug %}">Update</a></td>
-                      <td><a href="{% url "delete_blog_post" post.id %}">Delete</a></td>
+                      <th>Title</th>
+                      <th>Content</th>
+                      <th>Update</th>
+                      <th>Delete</th>
                     </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-            {% else %}
-              <p>No blog posts available.</p>
+                  </thead>
+                  <tbody>
+                    {% for post in posts %}
+                      <tr>
+                        <td><a href="{% url "blog_detail" post.slug %}">{{ post.title }}</a></td>
+                        <td>{{ post.content|truncatechars:50|safe }}</td>
+                        <td><a href="{% url "update_blog_post" post.slug %}">Update</a></td>
+                        <td><a href="{% url "delete_blog_post" post.id %}">Delete</a></td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              {% else %}
+                <p>No blog posts available.</p>
+              {% endif %}
             {% endif %}
           </div>
         </div>
@@ -67,6 +68,8 @@
            stopOnFocus: true, // Prevents dismissing of toast on hover
            style: {
              background: "linear-gradient(to right, #00b09b, #96c93d)",
+             //backgroundImage: "linear-gradient(to right, #7474BF 0%, #348AC7 51%, #7474BF 100%)",
+             color: "#fff",
            },
            onClick: function(){} // Callback after click
          }).showToast();

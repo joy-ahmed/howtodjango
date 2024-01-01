@@ -9,7 +9,7 @@
             <div class="col-md-12 mb-4">
               <div class="card">
                 {% if blog.cover_image %}
-                  <img src="{{ blog.cover_image.url }}" class="card-img-top" alt="{{ blog.title }}">
+                  <img src="{{ blog.cover_image.url }}" class="card-img-top" alt="{{ blog.title }}" style="height: 400px; object-fit: cover;">
                 {% endif %}
                 <div class="card-body">
                   <h5 class="card-title">{{ blog.title }}</h5>
