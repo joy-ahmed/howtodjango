@@ -10,7 +10,7 @@
                 {% for blog in blogs %}
                     <div class="col-md-4 mb-4">
                         <div class="card">
-                            <img src="{{ blog.cover_image.url }}" class="card-img-top" alt="{{ blog.title }}">
+                            <img src="{{ blog.cover_image.url }}" class="card-img-top" alt="{{ blog.title }}" style="height: 200px; object-fit: cover;">
                             <div class="card-body">
                                 <h5 class="card-title"><a href="{% url 'blog_detail' slug=blog.slug %}">{{ blog.title }}</a></h5>
                                 <p class="card-text">{{ blog.content|truncatewords:20| safe }}</p>
